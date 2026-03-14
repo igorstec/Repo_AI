@@ -1,0 +1,6 @@
+tasks-2026/
+solution_task3/venv/
+solution_task3/data/
+**/__pycache__/
+**/*.pyc
+.env
