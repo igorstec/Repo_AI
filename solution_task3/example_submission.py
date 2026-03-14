@@ -14,7 +14,7 @@ API_TOKEN = os.getenv("TEAM_TOKEN")
 SERVER_URL = os.getenv("SERVER_URL")
 DATA_DIR = os.getenv("DATA_DIR", "data")  # path to unpacked task3 dataset
 
-CSV_FILE = "data/out/submission.csv"
+CSV_FILE = "data/out/submission_train3.csv"
 
 FORECAST_MONTHS = [5, 6, 7, 8, 9, 10]
 FORECAST_YEAR = 2025
@@ -22,7 +22,7 @@ FORECAST_YEAR = 2025
 
 def load_data():
     """Load and merge time-series telemetry with device metadata."""
-    data = pd.read_csv(os.path.join(DATA_DIR, "data.csv"), parse_dates=["Timedate"])
+    data = pd.read_csv(os.path.join(DATA_DIR, "data.csv"), parse_dates=["timedate"])
     devices = pd.read_csv(os.path.join(DATA_DIR, "devices.csv"))
     data = data.merge(devices, on="deviceId", how="left")
     return data
@@ -31,10 +31,10 @@ def load_data():
 def build_features(df: pd.DataFrame) -> pd.DataFrame:
     """Extract time-based and aggregated features from raw telemetry."""
     df = df.copy()
-    df["year"] = df["Timedate"].dt.year
-    df["month"] = df["Timedate"].dt.month
-    df["hour"] = df["Timedate"].dt.hour
-    df["dayofweek"] = df["Timedate"].dt.dayofweek
+    df["year"] = df["timedate"].dt.year
+    df["month"] = df["timedate"].dt.month
+    df["hour"] = df["timedate"].dt.hour
+    df["dayofweek"] = df["timedate"].dt.dayofweek
 
     # Encode categorical device type
     le = LabelEncoder()
