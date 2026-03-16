@@ -1,2 +1,4 @@
-[Click here to see the task3 content](./task3.pdf)
-![Task3](./task3.png)
+![Task3](./task3.jpeg)
+![Task3](./task32.jpeg)
+![Task3](./task33.jpeg)
+![Task3](./task34.jpeg)
